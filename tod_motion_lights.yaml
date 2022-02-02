@@ -37,6 +37,16 @@ trigger:
   from: "off"
   to: "on"
 
+  condition:
+  - condition: and
+    conditions:
+    - condition: sun
+      before: sunrise
+      after: sunset
+    - condition: state
+      entity_id: input_select.house_mode
+      state: Home
+
 action:
   - service: light.turn_on
     target: !input light_target
