@@ -28,12 +28,12 @@ blueprint:
     sunset_offset:
       name: Offset to turn on lights
       description: Define offset to sunset
-      default: -00:30:00
+      default: '-00:30:00'
       text:
     sunrise_offset:
       name: Offset to turn off lights
       description: Define offset to sunrise
-      default: 00:30:00
+      default: '00:30:00'
       text:
 
 # If motion is detected within the delay,
