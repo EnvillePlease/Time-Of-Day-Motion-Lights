@@ -28,21 +28,13 @@ blueprint:
     sunset_offset:
       name: Offset to turn on lights
       description: Define offset to sunset
-      default: -30
-      selector:
-        number:
-          min: -60
-          max: 120
-          unit_of_measurement: minutes
+      default: -00:30:00
+      text:
     sunrise_offset:
       name: Offset to turn off lights
       description: Define offset to sunrise
-      default: 30
-      selector:
-        number:
-          min: -60
-          max: 120
-          unit_of_measurement: minutes
+      default: 00:30:00
+      text:
 
 # If motion is detected within the delay,
 # we restart the script.
@@ -54,7 +46,6 @@ trigger:
   entity_id: !input motion_entity
   from: "off"
   to: "on"
-
   condition:
   - condition: sun
     before: sunrise
@@ -72,7 +63,6 @@ trigger:
     - condition: state
       entity_id: input_select.house_mode
       state: Working From Home
-
 action:
   - service: light.turn_on
     data:
@@ -86,6 +76,5 @@ action:
       to: 'off'
     timeout: !input no_motion_wait
   - service: light.turn_off
-    data: {}
     target:
       entity_id: !input light_target
